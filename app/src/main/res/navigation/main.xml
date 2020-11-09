@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/menuNotifikasi">
+
+    <fragment
+        android:id="@+id/menuNotifikasi"
+        android:name="com.akbarprojec.mvvm_maintenanceapp.views.NotifikasiFragment"
+        android:label="fragment_notifikasi"
+        tools:layout="@layout/fragment_notifikasi" />
+    <fragment
+        android:id="@+id/menuOrder"
+        android:name="com.akbarprojec.mvvm_maintenanceapp.views.OrderFragment"
+        android:label="fragment_order"
+        tools:layout="@layout/fragment_order" />
+    <fragment
+        android:id="@+id/menuLaporan"
+        android:name="com.akbarprojec.mvvm_maintenanceapp.views.LaporanFragment"
+        android:label="fragment_laporan"
+        tools:layout="@layout/fragment_laporan" />
+    <fragment
+        android:id="@+id/menuprofile"
+        android:name="com.akbarprojec.mvvm_maintenanceapp.views.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
