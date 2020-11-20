@@ -12,17 +12,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginRepositories {
+public class NotifikasiRepositories {
 
     private MaintenanceInterface maintenanceInterface;
 
-    public LoginRepositories() {
+    public NotifikasiRepositories() {
         maintenanceInterface = ApiClient.getRetrofit().create(MaintenanceInterface.class);
     }
 
-    public LiveData<ResponseValue> getLoginResponseLiveData(String users, String pass) {
+    public LiveData<ResponseValue> getNorifikasiListData() {
         MutableLiveData<ResponseValue> data = new MutableLiveData<>();
-        maintenanceInterface.loginToApps(users,pass).enqueue(new Callback<ResponseValue>() {
+        maintenanceInterface.getListNotifikasi().enqueue(new Callback<ResponseValue>() {
             @Override
             public void onResponse(@NonNull Call<ResponseValue> call, @NonNull Response<ResponseValue> response) {
                 data.setValue(response.body());
@@ -33,8 +33,6 @@ public class LoginRepositories {
                 data.setValue(null);
             }
         });
-
         return data;
     }
-
 }
