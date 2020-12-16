@@ -6,7 +6,7 @@
         android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.IndexActivity">
+        tools:context=".activities.IndexActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layCons"
@@ -29,7 +29,14 @@
                     android:layout_width="@dimen/_25sdp"
                     android:layout_height="@dimen/_25sdp"
                     android:src="@drawable/ic_menu"
-                    app:tint="#FFFFFF" />
+                    app:tint="#888888" />
+                <TextView
+                    android:id="@+id/titleMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Maintenance App"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:textSize="@dimen/_16ssp" />
 
             </LinearLayout>
 
@@ -51,7 +58,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:headerLayout="@layout/layout_menu_nav_header"
-            app:menu="@menu/navigation_index_menu">
+            app:menu="@menu/navigation_index_menu"
+            android:backgroundTint="#0C0C0E">
 
         </com.google.android.material.navigation.NavigationView>
 

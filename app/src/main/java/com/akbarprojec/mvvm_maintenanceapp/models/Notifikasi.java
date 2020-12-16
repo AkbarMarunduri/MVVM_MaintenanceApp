@@ -37,6 +37,9 @@ public class Notifikasi{
 	@Json(name = "desc_notifikasi")
 	private String descNotifikasi;
 
+	public boolean isSelected = false;
+
+
 	public void setCrtdate(String crtdate){
 		this.crtdate = crtdate;
 	}

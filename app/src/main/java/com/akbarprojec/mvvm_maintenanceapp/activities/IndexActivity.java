@@ -1,25 +1,26 @@
-package com.akbarprojec.mvvm_maintenanceapp.views;
+package com.akbarprojec.mvvm_maintenanceapp.activities;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.akbarprojec.mvvm_maintenanceapp.R;
-import com.akbarprojec.mvvm_maintenanceapp.adaptors.NotifikasiAdaptor;
 import com.akbarprojec.mvvm_maintenanceapp.databinding.ActivityIndexBinding;
 import com.akbarprojec.mvvm_maintenanceapp.databinding.LayoutMenuNavHeaderBinding;
 import com.akbarprojec.mvvm_maintenanceapp.models.User;
-import com.akbarprojec.mvvm_maintenanceapp.responses.ResponseValue;
 import com.akbarprojec.mvvm_maintenanceapp.viewmodels.NotifikasiViewModel;
 import com.google.android.material.navigation.NavigationView;
 
@@ -42,11 +43,20 @@ public class IndexActivity extends AppCompatActivity {
         //mengatur navigation drawable
         navigationView = activityIndexBinding.navigationView;
         navigationView.setItemIconTintList(null);
+        navigationView.setItemTextColor(ColorStateList.valueOf(Color.WHITE));
+        navigationView.setItemIconTintList(ColorStateList.valueOf(Color.WHITE));
         view = navigationView.getHeaderView(0);
         userInformation();
 
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
         NavigationUI.setupWithNavController(navigationView, navController);
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+                activityIndexBinding.titleMain.setText(destination.getLabel());
+            }
+        });
+
 
     }
 

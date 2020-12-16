@@ -1,11 +1,12 @@
 package com.akbarprojec.mvvm_maintenanceapp.adaptors;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.akbarprojec.mvvm_maintenanceapp.R;
-import com.akbarprojec.mvvm_maintenanceapp.databinding.LayoutContainerNotifikasiBinding;
+import com.akbarprojec.mvvm_maintenanceapp.databinding.NotifikasiItemLayoutBinding;
+import com.akbarprojec.mvvm_maintenanceapp.listener.NotifikasiListener;
 import com.akbarprojec.mvvm_maintenanceapp.models.Notifikasi;
 
 import java.util.List;
@@ -17,10 +18,12 @@ import androidx.recyclerview.widget.RecyclerView;
 public class NotifikasiAdaptor extends RecyclerView.Adapter<NotifikasiAdaptor.NotifikasiViewHolde> {
 
     List<Notifikasi> notifikasis;
+    NotifikasiListener notifikasiListener;
     private LayoutInflater layoutInflater;
 
-    public NotifikasiAdaptor(List<Notifikasi> notifikasis) {
+    public NotifikasiAdaptor(List<Notifikasi> notifikasis, NotifikasiListener notifikasiListener) {
         this.notifikasis = notifikasis;
+        this.notifikasiListener = notifikasiListener;
     }
 
     @NonNull
@@ -29,7 +32,7 @@ public class NotifikasiAdaptor extends RecyclerView.Adapter<NotifikasiAdaptor.No
         if (layoutInflater == null) {
             layoutInflater = LayoutInflater.from(parent.getContext());
         }
-        LayoutContainerNotifikasiBinding notifikasiBinding = DataBindingUtil.inflate(layoutInflater, R.layout.layout_container_notifikasi, parent, false);
+        NotifikasiItemLayoutBinding notifikasiBinding = DataBindingUtil.inflate(layoutInflater, R.layout.notifikasi_item_layout, parent, false);
         return new NotifikasiViewHolde(notifikasiBinding);
     }
 
@@ -43,16 +46,42 @@ public class NotifikasiAdaptor extends RecyclerView.Adapter<NotifikasiAdaptor.No
         return notifikasis.size();
     }
 
-    static class NotifikasiViewHolde extends RecyclerView.ViewHolder {
-        private LayoutContainerNotifikasiBinding notifikasiBinding;
+    class NotifikasiViewHolde extends RecyclerView.ViewHolder {
+        private NotifikasiItemLayoutBinding notifikasiBinding;
 
-        public NotifikasiViewHolde(@NonNull LayoutContainerNotifikasiBinding notifikasiBinding) {
+        public NotifikasiViewHolde(@NonNull NotifikasiItemLayoutBinding notifikasiBinding) {
             super(notifikasiBinding.getRoot());
             this.notifikasiBinding = notifikasiBinding;
         }
 
-        public void notifikasi(Notifikasi notifikasi) {
-            notifikasiBinding.setNotifikasi(notifikasi);
+        public void notifikasi(final Notifikasi notifikasi) {
+
+            notifikasiBinding.setNomor(notifikasi.getNoNotifikasi());
+            notifikasiBinding.setTanggal(notifikasi.getTgl());
+            notifikasiBinding.setDescription(notifikasi.getDescNotifikasi());
+            notifikasiBinding.setStatus(notifikasi.getStsNotif());
+
+            if (notifikasi.getStsNotif().equalsIgnoreCase("new")) {
+                notifikasiBinding.txStatus.setTextColor(Color.parseColor("#FFE712"));
+            } else if (notifikasi.getStsNotif().equalsIgnoreCase("approve")) {
+                notifikasiBinding.txStatus.setTextColor(Color.parseColor("#25DA62"));
+            } else if (notifikasi.getStsNotif().equalsIgnoreCase("comp")) {
+                notifikasiBinding.txStatus.setTextColor(Color.parseColor("#254EDA"));
+            } else {
+                notifikasiBinding.txStatus.setTextColor(Color.parseColor("#DA2540"));
+            }
+
+            notifikasiBinding.getRoot().setOnClickListener(view -> {
+                if (notifikasi.isSelected) {
+                    notifikasi.isSelected = false;
+                    notifikasiBinding.cardNotifikasi.setBackgroundResource(R.drawable.unselected_background);
+                } else {
+                    notifikasi.isSelected = true;
+                    notifikasiBinding.cardNotifikasi.setBackgroundResource(R.drawable.selected_background);
+                }
+                notifikasiListener.onClickNotifikasiItem(notifikasi);
+            });
+
         }
     }
 

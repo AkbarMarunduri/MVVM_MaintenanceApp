@@ -17,4 +17,7 @@ public interface MaintenanceInterface {
 
     @GET("Notifikasi.php")
     Call<ResponseValue> getListNotifikasi();
+
+    @GET("Order.php")
+    Call<ResponseValue> getListOrder();
 }

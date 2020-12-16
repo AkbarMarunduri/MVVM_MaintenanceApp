@@ -1,4 +1,4 @@
-package com.akbarprojec.mvvm_maintenanceapp.views;
+package com.akbarprojec.mvvm_maintenanceapp.activities;
 
 import android.os.Bundle;
 
@@ -13,12 +13,13 @@ import com.akbarprojec.mvvm_maintenanceapp.R;
 /**
 
  */
-public class OrderFragment extends Fragment {
+public class LaporanFragment extends Fragment {
 
 
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_order, container, false);
+        return inflater.inflate(R.layout.fragment_laporan, container, false);
     }
 }

@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#F3F4EC</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorTextOther">#5AD303</color>
+    <color name="text_hint_color">#C7C8C1</color>
+    <color name="bacground_whith">#FFFFFF</color>
+    <color name="button_black">#0C0C0E</color>
+    <color name="text_color_new">#FFE712</color>
+    <color name="text_color_approve">#25DA62</color>
+    <color name="text_color_complete">#254EDA</color>
+    <color name="text_color_delete">#DA2540</color>
+    <color name="text_colo_whith">#FFFFFF</color>
 </resources>
