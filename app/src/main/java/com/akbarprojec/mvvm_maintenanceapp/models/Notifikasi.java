@@ -1,8 +1,11 @@
 package com.akbarprojec.mvvm_maintenanceapp.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.squareup.moshi.Json;
 
-public class Notifikasi{
+public class Notifikasi implements Parcelable {
 
 	@Json(name = "crtdate")
 	private String crtdate;
@@ -39,6 +42,33 @@ public class Notifikasi{
 
 	public boolean isSelected = false;
 
+
+	protected Notifikasi(Parcel in) {
+		crtdate = in.readString();
+		stsNotif = in.readString();
+		noMesin = in.readString();
+		created = in.readString();
+		jam = in.readString();
+		plant = in.readString();
+		noNotifikasi = in.readString();
+		tgl = in.readString();
+		catatan = in.readString();
+		pelapor = in.readString();
+		descNotifikasi = in.readString();
+		isSelected = in.readByte() != 0;
+	}
+
+	public static final Creator<Notifikasi> CREATOR = new Creator<Notifikasi>() {
+		@Override
+		public Notifikasi createFromParcel(Parcel in) {
+			return new Notifikasi(in);
+		}
+
+		@Override
+		public Notifikasi[] newArray(int size) {
+			return new Notifikasi[size];
+		}
+	};
 
 	public void setCrtdate(String crtdate){
 		this.crtdate = crtdate;
@@ -126,5 +156,26 @@ public class Notifikasi{
 
 	public String getDescNotifikasi(){
 		return descNotifikasi;
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel parcel, int i) {
+		parcel.writeString(crtdate);
+		parcel.writeString(stsNotif);
+		parcel.writeString(noMesin);
+		parcel.writeString(created);
+		parcel.writeString(jam);
+		parcel.writeString(plant);
+		parcel.writeString(noNotifikasi);
+		parcel.writeString(tgl);
+		parcel.writeString(catatan);
+		parcel.writeString(pelapor);
+		parcel.writeString(descNotifikasi);
+		parcel.writeByte((byte) (isSelected ? 1 : 0));
 	}
 }

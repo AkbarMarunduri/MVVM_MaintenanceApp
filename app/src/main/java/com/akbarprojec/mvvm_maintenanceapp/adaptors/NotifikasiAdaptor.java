@@ -2,6 +2,7 @@ package com.akbarprojec.mvvm_maintenanceapp.adaptors;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.akbarprojec.mvvm_maintenanceapp.R;
@@ -71,7 +72,9 @@ public class NotifikasiAdaptor extends RecyclerView.Adapter<NotifikasiAdaptor.No
                 notifikasiBinding.txStatus.setTextColor(Color.parseColor("#DA2540"));
             }
 
-            notifikasiBinding.getRoot().setOnClickListener(view -> {
+        notifikasiBinding.cardNotifikasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 if (notifikasi.isSelected) {
                     notifikasi.isSelected = false;
                     notifikasiBinding.cardNotifikasi.setBackgroundResource(R.drawable.unselected_background);
@@ -80,8 +83,8 @@ public class NotifikasiAdaptor extends RecyclerView.Adapter<NotifikasiAdaptor.No
                     notifikasiBinding.cardNotifikasi.setBackgroundResource(R.drawable.selected_background);
                 }
                 notifikasiListener.onClickNotifikasiItem(notifikasi);
-            });
-
+            }
+        });
         }
     }
 

@@ -14,6 +14,9 @@ public interface MaintenanceInterface {
     @POST("login.php")
     Call<ResponseValue> loginToApps(@Field("iduser") String id,
                                     @Field("pass") String pasw);
+    @FormUrlEncoded
+    @POST("logout.php")
+    Call<ResponseValue> logOutApp(@Field("iduser") String id);
 
     @GET("Notifikasi.php")
     Call<ResponseValue> getListNotifikasi();

@@ -1,6 +1,7 @@
 package com.akbarprojec.mvvm_maintenanceapp.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -59,6 +60,9 @@ public class NotifikasiFragment extends Fragment implements NotifikasiListener {
 
     @Override
     public void onClickNotifikasiItem(Notifikasi notifikasi) {
+        Intent intent = new Intent(getActivity(), DetailNotifikasiActivity.class);
+        intent.putExtra("notifikasi", notifikasi);
+        startActivity(intent);
         Toast.makeText(getContext(), "Action Clicket at "+notifikasi.getNoNotifikasi()+" !!", Toast.LENGTH_LONG).show();
     }
 }

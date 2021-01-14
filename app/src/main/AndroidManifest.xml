@@ -16,7 +16,8 @@
         android:theme="@style/borderTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".activities.IndexActivity"></activity>
+        <activity android:name=".activities.DetailNotifikasiActivity"></activity>
+        <activity android:name=".activities.IndexActivity" />
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

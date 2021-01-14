@@ -14,13 +14,14 @@
         android:icon="@drawable/ic_laporan"
         android:title="Laporan" />
 
-    <item android:title="Setting">
-        <menu>
-            <item
-                android:id="@+id/menuprofile"
-                android:icon="@drawable/ic_profile"
-                android:title="My Profile" />
-        </menu>
-    </item>
+    <item
+        android:id="@+id/menuprofile"
+        android:icon="@drawable/ic_profile"
+        android:title="My Profile" />
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_logout_fg"
+        android:title="LogOut" />
+
 
 </menu>

@@ -36,6 +36,7 @@
             android:text="@{userName}"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textColor="@android:color/holo_blue_light"
             app:layout_constraintEnd_toEndOf="@id/iamageUser"
             app:layout_constraintStart_toStartOf="@id/iamageUser"
             app:layout_constraintTop_toBottomOf="@id/iamageUser" />
