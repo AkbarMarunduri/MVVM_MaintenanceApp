@@ -1,11 +1,14 @@
 package com.akbarprojec.mvvm_maintenanceapp.activities;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 import retrofit2.Call;
@@ -15,6 +18,8 @@ import retrofit2.Response;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -30,6 +35,8 @@ import com.akbarprojec.mvvm_maintenanceapp.ultility.Constant;
 import com.akbarprojec.mvvm_maintenanceapp.ultility.PreferenceManeger;
 import com.akbarprojec.mvvm_maintenanceapp.viewmodels.NotifikasiViewModel;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.zip.Inflater;
 
 public class IndexActivity extends AppCompatActivity {
     ActivityIndexBinding activityIndexBinding;
@@ -100,6 +107,5 @@ public class IndexActivity extends AppCompatActivity {
             }
         });
     }
-
 
 }

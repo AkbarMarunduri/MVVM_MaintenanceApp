@@ -11,7 +11,6 @@ import com.akbarprojec.mvvm_maintenanceapp.models.Notifikasi;
 
 public class DetailNotifikasiActivity extends AppCompatActivity {
     Notifikasi notifikasi;
-
     ActivityDetailNotifikasiBinding notifikasiBinding;
 
     @Override

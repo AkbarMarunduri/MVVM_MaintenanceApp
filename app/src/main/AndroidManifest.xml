@@ -16,15 +16,20 @@
         android:theme="@style/borderTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".activities.DetailNotifikasiActivity"></activity>
+        <activity android:name=".activities.LoginActivity"></activity>
+        <activity android:name=".activities.DetailNotifikasiActivity" />
         <activity android:name=".activities.IndexActivity" />
-        <activity android:name=".activities.LoginActivity">
+        <activity android:name=".activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
