@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bacground_whith"
+        tools:context=".activities.LoginActivity">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutUserText"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="@dimen/_280sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginTop="@dimen/_60sdp"
+            android:hint="Username"
+            android:textColorHint="@color/text_hint_color"
+            app:endIconMode="clear_text"
+            app:hintTextColor="@color/design_default_color_on_secondary"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/userName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edit_text_bacground"
+                android:inputType="text"
+                android:textSize="@dimen/_12ssp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutPaswod"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="@dimen/_280sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:hint="Password"
+            android:textColorHint="@color/text_hint_color"
+            app:endIconMode="password_toggle"
+            app:hintTextColor="@color/design_default_color_on_secondary"
+            app:layout_constraintEnd_toEndOf="@+id/layoutUserText"
+            app:layout_constraintStart_toStartOf="@+id/layoutUserText"
+            app:layout_constraintTop_toBottomOf="@+id/layoutUserText">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/pasword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edit_text_bacground"
+                android:inputType="textPassword"
+                android:textSize="@dimen/_12ssp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btlogin"
+            android:layout_width="@dimen/_280sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_margin="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_100sdp"
+            android:backgroundTint="@color/button_black"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintEnd_toEndOf="@+id/layoutPaswod"
+            app:layout_constraintStart_toStartOf="@id/layoutPaswod"
+            app:layout_constraintTop_toBottomOf="@+id/layoutPaswod" />
+
+        <TextView
+            android:id="@+id/forgotText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="Forgot password?"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/btlogin"
+            app:layout_constraintStart_toStartOf="@id/btlogin"
+            app:layout_constraintTop_toBottomOf="@id/btlogin" />
+
+        <TextView
+            android:id="@+id/dont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:text="Don't have an account?"
+            android:textColor="#999999"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toStartOf="@id/singUp"
+            app:layout_constraintStart_toStartOf="@id/forgotText"
+            app:layout_constraintTop_toBottomOf="@id/forgotText" />
+
+        <TextView
+            android:id="@+id/singUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:text="Sing Up"
+            android:textColor="#000000"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/forgotText"
+            app:layout_constraintStart_toEndOf="@id/dont"
+            app:layout_constraintTop_toBottomOf="@id/forgotText" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
