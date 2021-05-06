@@ -1,6 +1,5 @@
 package com.akbarprojec.mvvm_maintenanceapp.repositories;
 
-import com.akbarprojec.mvvm_maintenanceapp.models.Notifikasi;
 import com.akbarprojec.mvvm_maintenanceapp.networks.ApiClient;
 import com.akbarprojec.mvvm_maintenanceapp.networks.MaintenanceInterface;
 import com.akbarprojec.mvvm_maintenanceapp.responses.ResponseValue;

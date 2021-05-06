@@ -3,52 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activities.NotifikasiFragment">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/notifikasiRecycleView"
+        <com.google.android.material.appbar.AppBarLayout
+            style="ThemeOverlay.AppCompat.Dark.ActionBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/notifikasi_item_layout" />
+            android:layout_height="wrap_content">
 
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottomAppBar"
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabNotifikasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabIndicatorFullWidth="false"
+                app:tabMode="scrollable" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            style="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#0C0C0E"
-            app:fabAlignmentMode="end"
-            app:fabCradleMargin="5dp"
-            app:fabCradleRoundedCornerRadius="5dp"
-            app:fabCradleVerticalOffset="5dp"
-            app:hideOnScroll="true"
-           android:layout_gravity="bottom" />
+            android:layout_height="match_parent" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_add"
-            android:backgroundTint="@color/button_black"
-            app:tint="#FFFFFF"
-            app:layout_anchor="@id/bottomAppBar" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
-            android:id="@+id/actionSelected"
-            android:text="Select"
-            android:textSize="@dimen/_25ssp"
-            android:visibility="gone"
-            android:layout_gravity="bottom" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

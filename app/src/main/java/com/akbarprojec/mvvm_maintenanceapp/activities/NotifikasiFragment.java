@@ -1,4 +1,5 @@
 package com.akbarprojec.mvvm_maintenanceapp.activities;
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -18,7 +19,11 @@ import com.akbarprojec.mvvm_maintenanceapp.adaptors.NotifikasiAdaptor;
 import com.akbarprojec.mvvm_maintenanceapp.databinding.FragmentNotifikasiBinding;
 import com.akbarprojec.mvvm_maintenanceapp.listener.NotifikasiListener;
 import com.akbarprojec.mvvm_maintenanceapp.models.Notifikasi;
+import com.akbarprojec.mvvm_maintenanceapp.pager.NotifikasiPagerAdaptor;
 import com.akbarprojec.mvvm_maintenanceapp.viewmodels.NotifikasiViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +34,11 @@ public class NotifikasiFragment extends Fragment implements NotifikasiListener {
     FragmentNotifikasiBinding fragmentNotifikasiBinding;
     View view;
     private NotifikasiViewModel viewModel;
+
+    List<Notifikasi> newNotifikasi = new ArrayList<>();
+    List<Notifikasi> aproveNotifikasi = new ArrayList<>();
+    List<Notifikasi> compNotifikasi = new ArrayList<>();
+    List<Notifikasi> deltNotifikasi = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,32 +56,38 @@ public class NotifikasiFragment extends Fragment implements NotifikasiListener {
 
     private void doInitialization() {
         viewModel = new ViewModelProvider(this).get(NotifikasiViewModel.class);
-        fragmentNotifikasiBinding.fabAdd.setOnClickListener(view1 -> Toast.makeText(getActivity(),"Fab Action Clicked!!",Toast.LENGTH_LONG).show());
         lodaListNotifikasi();
     }
 
     private void lodaListNotifikasi() {
-        viewModel.getNotifikasiList().observe(getActivity(), listNotifikasi -> {
-            fragmentNotifikasiBinding.notifikasiRecycleView.setAdapter(new NotifikasiAdaptor(listNotifikasi.getListNotifikasi(), this));
+        viewModel.getNotifikasiList().observe(getActivity(), notifikasiResponse -> {
+            for (Notifikasi notifikasi : notifikasiResponse.getListNotifikasi()) {
+                if (notifikasi.getStsNotif().equalsIgnoreCase("NEW")) {
+                    newNotifikasi.add(notifikasi);
+                } else if (notifikasi.getStsNotif().equalsIgnoreCase("APPR")) {
+                    aproveNotifikasi.add(notifikasi);
+                } else if (notifikasi.getStsNotif().equalsIgnoreCase("COMP")) {
+                    compNotifikasi.add(notifikasi);
+                } else if (notifikasi.getStsNotif().equalsIgnoreCase("DELT")) {
+                    deltNotifikasi.add(notifikasi);
+                }
+            }
+            Toast.makeText(getActivity(), "Jumlah notifikasi \nNew : " + newNotifikasi.size() + "\nAprove : " + aproveNotifikasi.size() + "\nComp : " + compNotifikasi.size(), Toast.LENGTH_LONG).show();
+
+            NotifikasiPagerAdaptor pagerAdaptor = new NotifikasiPagerAdaptor(getChildFragmentManager());
+            pagerAdaptor.setData(newNotifikasi, aproveNotifikasi, compNotifikasi, deltNotifikasi);
+            fragmentNotifikasiBinding.viewPager.setAdapter(pagerAdaptor);
+            fragmentNotifikasiBinding.tabNotifikasi.setupWithViewPager(fragmentNotifikasiBinding.viewPager);
         });
     }
 
     @Override
     public void onClickNotifikasiItem(Notifikasi notifikasi) {
-        Intent intent = new Intent(getActivity(), DetailNotifikasiActivity.class);
-        intent.putExtra("notifikasi", notifikasi);
-        startActivity(intent);
-        Toast.makeText(getContext(), "Action Clicket at "+notifikasi.getNoNotifikasi()+" !!", Toast.LENGTH_LONG).show();
+
     }
 
     @Override
-    public void onLongClickNotifikasiItem(Notifikasi notifikasi) {
-        if (notifikasi.isSelected) {
-            fragmentNotifikasiBinding.actionSelected.setVisibility(View.VISIBLE);
-            fragmentNotifikasiBinding.bottomAppBar.setVisibility(View.GONE);
-        }else {
-            fragmentNotifikasiBinding.actionSelected.setVisibility(View.GONE);
-            fragmentNotifikasiBinding.bottomAppBar.setVisibility(View.VISIBLE);
-        }
+    public void onLongClickNotifikasiItem(List<Notifikasi> notifSelected) {
+
     }
 }

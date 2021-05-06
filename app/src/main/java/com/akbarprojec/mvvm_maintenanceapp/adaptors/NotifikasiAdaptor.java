@@ -10,6 +10,7 @@ import com.akbarprojec.mvvm_maintenanceapp.databinding.NotifikasiItemLayoutBindi
 import com.akbarprojec.mvvm_maintenanceapp.listener.NotifikasiListener;
 import com.akbarprojec.mvvm_maintenanceapp.models.Notifikasi;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -82,7 +83,14 @@ public class NotifikasiAdaptor extends RecyclerView.Adapter<NotifikasiAdaptor.No
                         notifikasi.isSelected = true;
                         notifikasiBinding.cardNotifikasi.setBackgroundResource(R.drawable.selected_background);
                     }
-                    notifikasiListener.onLongClickNotifikasiItem(notifikasi);
+
+                    List<Notifikasi> selectItem = new ArrayList<>();
+                    for (Notifikasi n : notifikasis) {
+                        if (n.isSelected == true) {
+                            selectItem.add(n);
+                        }
+                    }
+                    notifikasiListener.onLongClickNotifikasiItem(selectItem);
                     return true;
                 }
             });

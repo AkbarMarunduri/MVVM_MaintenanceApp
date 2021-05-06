@@ -18,7 +18,7 @@ import com.akbarprojec.mvvm_maintenanceapp.databinding.FragmentOrderBinding;
 import com.akbarprojec.mvvm_maintenanceapp.viewmodels.OrderViewModel;
 
 /**
-
+ *
  */
 public class OrderFragment extends Fragment {
     FragmentOrderBinding orderBinding;
@@ -44,8 +44,8 @@ public class OrderFragment extends Fragment {
     }
 
     public void loadListOrder() {
-        viewModel.getDataListOrder().observe(getActivity(),getListOrder->{
-            orderBinding.recylerViewOrders.setAdapter(new OrdersAdaptor(getListOrder.getListOrder()));
+        viewModel.getDataListOrder().observe(getActivity(), orderResponse -> {
+            orderBinding.recylerViewOrders.setAdapter(new OrdersAdaptor(orderResponse.getListOrder()));
         });
     }
 }
