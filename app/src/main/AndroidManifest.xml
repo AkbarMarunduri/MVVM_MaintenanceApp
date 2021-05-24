@@ -17,8 +17,8 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity android:name=".activities.LoginActivity"></activity>
-        <activity android:name=".activities.DetailNotifikasiActivity" />
-        <activity android:name=".activities.IndexActivity" />
+        <activity android:name=".activities.notifikasi.NotifDetail.DetailNotifikasiActivity" />
+        <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

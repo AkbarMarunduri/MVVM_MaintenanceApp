@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activities.notifikasi.NotifikasiFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/apprNotifRv"
+            android:id="@+id/deltOrderRv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/notifikasi_item_layout" />
+
 
         <ImageView
             android:id="@+id/emptyLogo"
@@ -23,7 +24,6 @@
             android:layout_gravity="center"
             android:src="@drawable/ic_empty"
             android:visibility="gone" />
-
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

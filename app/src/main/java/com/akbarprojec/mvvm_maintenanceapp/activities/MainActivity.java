@@ -1,16 +1,14 @@
 package com.akbarprojec.mvvm_maintenanceapp.activities;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,7 +17,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -27,24 +24,24 @@ import android.widget.Toast;
 
 import com.akbarprojec.mvvm_maintenanceapp.R;
 import com.akbarprojec.mvvm_maintenanceapp.databinding.ActivityIndexBinding;
-import com.akbarprojec.mvvm_maintenanceapp.databinding.LayoutMenuNavHeaderBinding;
+import com.akbarprojec.mvvm_maintenanceapp.models.User;
 import com.akbarprojec.mvvm_maintenanceapp.networks.ApiClient;
 import com.akbarprojec.mvvm_maintenanceapp.networks.MaintenanceInterface;
 import com.akbarprojec.mvvm_maintenanceapp.responses.ResponseValue;
 import com.akbarprojec.mvvm_maintenanceapp.ultility.Constant;
 import com.akbarprojec.mvvm_maintenanceapp.ultility.PreferenceManeger;
-import com.akbarprojec.mvvm_maintenanceapp.viewmodels.NotifikasiViewModel;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
 
-import java.util.zip.Inflater;
+import java.io.IOException;
 
-public class IndexActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     ActivityIndexBinding activityIndexBinding;
-    LayoutMenuNavHeaderBinding layoutMenuNavHeaderBinding;
     NavigationView navigationView;
     View view;
-    NotifikasiViewModel viewModel;
-    private PreferenceManeger preferenceManeger;
+    PreferenceManeger preferenceManeger;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +61,9 @@ public class IndexActivity extends AppCompatActivity {
         navigationView.setItemIconTintList(ColorStateList.valueOf(Color.WHITE));
         view = navigationView.getHeaderView(0);
 
-
         userInformation();
 
+        //tag navigasi view dengan navigasi controler
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
         NavigationUI.setupWithNavController(navigationView, navController);
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> activityIndexBinding.titleMain.setText(destination.getLabel()));
@@ -77,26 +74,33 @@ public class IndexActivity extends AppCompatActivity {
         TextView userName = view.findViewById(R.id.nav_username);
         TextView userLevel = view.findViewById(R.id.nav_user_level);
 
-        userName.setText(preferenceManeger.getString(Constant.KEY_USER_NAME));
-        String level = preferenceManeger.getString(Constant.KEY_USER_LEVEL);
-        if (level.equals("1")) {
-            userLevel.setText("Production");
-        } else if (level.equals("2")) {
-            userLevel.setText("Maintenance");
-        } else if(level.equals("3")){
-            userLevel.setText("Manager");
+        try {
+            Moshi moshi = new Moshi.Builder().build();
+            JsonAdapter<User> jsonAdapter = moshi.adapter(User.class);
+            user = jsonAdapter.fromJson(preferenceManeger.getUser(Constant.KEY_USER));
+            userName.setText(user.getIduser());
+            String level = user.getLevel();
+
+            if (level.equals("1")) {
+                userLevel.setText("Production");
+            } else if (level.equals("2")) {
+                userLevel.setText("Maintenance");
+            } else if (level.equals("3")) {
+                userLevel.setText("Manager");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-
 
     private void logOut(String id) {
         MaintenanceInterface anInterface = ApiClient.getRetrofit().create(MaintenanceInterface.class);
         anInterface.logOutApp(id).enqueue(new Callback<ResponseValue>() {
             @Override
             public void onResponse(Call<ResponseValue> call, Response<ResponseValue> response) {
-                if (response.body().getValue()==1) {
-                    Toast.makeText(IndexActivity.this, "Berhasil logout", Toast.LENGTH_SHORT).show();
-                }else{
+                if (response.body().getValue() == 1) {
+                    Toast.makeText(MainActivity.this, "Berhasil logout", Toast.LENGTH_SHORT).show();
+                } else {
 
                 }
             }

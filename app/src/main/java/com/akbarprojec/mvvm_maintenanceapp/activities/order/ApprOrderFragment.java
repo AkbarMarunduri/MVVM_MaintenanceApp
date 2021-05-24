@@ -1,4 +1,4 @@
-package com.akbarprojec.mvvm_maintenanceapp.activities;
+package com.akbarprojec.mvvm_maintenanceapp.activities.order;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,23 +10,24 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.akbarprojec.mvvm_maintenanceapp.R;
-import com.akbarprojec.mvvm_maintenanceapp.adaptors.NotifikasiAdaptor;
-import com.akbarprojec.mvvm_maintenanceapp.databinding.FragmentCompNotifBinding;
+import com.akbarprojec.mvvm_maintenanceapp.adaptors.OrdersAdaptor;
+import com.akbarprojec.mvvm_maintenanceapp.databinding.FragmentApprOrderBinding;
 import com.akbarprojec.mvvm_maintenanceapp.listener.NotifikasiListener;
 import com.akbarprojec.mvvm_maintenanceapp.models.Notifikasi;
+import com.akbarprojec.mvvm_maintenanceapp.models.Order;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompNotifFragment extends Fragment implements NotifikasiListener {
-    FragmentCompNotifBinding binding;
+public class ApprOrderFragment extends Fragment {
+    FragmentApprOrderBinding binding;
     View view;
-    List<Notifikasi> compNotifikasi = new ArrayList<>();
+    List<Order> apprOrder = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_comp_notif, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_appr_order, container, false);
         view = binding.getRoot();
         return view;
     }
@@ -36,24 +37,16 @@ public class CompNotifFragment extends Fragment implements NotifikasiListener {
         super.onActivityCreated(savedInstanceState);
         doInitializasion();
     }
+
     private void doInitializasion() {
-        compNotifikasi = getArguments().getParcelableArrayList("data");
-        if (compNotifikasi.size() > 0) {
-            NotifikasiAdaptor notifikasiAdaptor = new NotifikasiAdaptor(compNotifikasi, this);
-            binding.compNotifRv.setAdapter(notifikasiAdaptor);
+        apprOrder = getArguments().getParcelableArrayList("data");
+        if (apprOrder.size() > 0) {
+            OrdersAdaptor ordersAdaptor = new OrdersAdaptor(apprOrder);
+            binding.appOrderRv.setAdapter(ordersAdaptor);
         } else {
-            binding.compNotifRv.setVisibility(View.GONE);
             binding.emptyLogo.setVisibility(View.VISIBLE);
+            binding.appOrderRv.setVisibility(View.GONE);
         }
-    }
-
-    @Override
-    public void onClickNotifikasiItem(Notifikasi notifikasi) {
-
-    }
-
-    @Override
-    public void onLongClickNotifikasiItem(List<Notifikasi> notifSelected) {
 
     }
 }

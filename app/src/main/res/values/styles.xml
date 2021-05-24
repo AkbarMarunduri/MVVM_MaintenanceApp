@@ -1,12 +1,26 @@
 <resources>
-<!-- Base application theme. -->
-<style name="borderTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-    <!-- Customize your theme here. -->
-    <item name="colorPrimarySurface">@color/text_colo_whith</item>
-    <item name="android:colorPrimary">@color/text_colo_whith</item>
-    <item name="android:colorPrimaryDark">@color/text_colo_whith</item>
-    <item name="color">@color/text_colo_whith</item>
-    <item name="fontFamily">@font/arial</item>
-</style>
+    <!-- Base application theme. -->
+    <style name="borderTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimarySurface">@color/text_colo_whith</item>
+        <item name="android:colorPrimary">@color/text_colo_whith</item>
+        <item name="android:colorPrimaryDark">@color/button_black</item>
+        <item name="color">@color/text_colo_whith</item>
+        <item name="fontFamily">@font/arial</item>
+    </style>
 
+    <style name="borderTheme.AppBarOverLay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Tab">
+        <item name="android:fontFamily">@font/arial</item>
+        <item name="android:textColor">#8D92A3</item>
+        <item name="android:textSize">14sp</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:background">#989595</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <style name="Tab.notifikasi" >
+        <item name="android:background">#FFF</item>
+    </style>
 </resources>

@@ -1,4 +1,4 @@
-package com.akbarprojec.mvvm_maintenanceapp.activities;
+package com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,8 +41,7 @@ public class NotifikasiFragment extends Fragment implements NotifikasiListener {
     List<Notifikasi> deltNotifikasi = new ArrayList<>();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentNotifikasiBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_notifikasi, container, false);
         view = fragmentNotifikasiBinding.getRoot();
         return view;
@@ -72,12 +71,17 @@ public class NotifikasiFragment extends Fragment implements NotifikasiListener {
                     deltNotifikasi.add(notifikasi);
                 }
             }
-            Toast.makeText(getActivity(), "Jumlah notifikasi \nNew : " + newNotifikasi.size() + "\nAprove : " + aproveNotifikasi.size() + "\nComp : " + compNotifikasi.size(), Toast.LENGTH_LONG).show();
 
             NotifikasiPagerAdaptor pagerAdaptor = new NotifikasiPagerAdaptor(getChildFragmentManager());
             pagerAdaptor.setData(newNotifikasi, aproveNotifikasi, compNotifikasi, deltNotifikasi);
             fragmentNotifikasiBinding.viewPager.setAdapter(pagerAdaptor);
             fragmentNotifikasiBinding.tabNotifikasi.setupWithViewPager(fragmentNotifikasiBinding.viewPager);
+
+//            fragmentNotifikasiBinding.tabNotifikasi.getTabAt(0).getOrCreateBadge().setNumber(newNotifikasi.size());
+//            fragmentNotifikasiBinding.tabNotifikasi.getTabAt(1).getOrCreateBadge().setNumber(aproveNotifikasi.size());
+//            fragmentNotifikasiBinding.tabNotifikasi.getTabAt(2).getOrCreateBadge().setNumber(compNotifikasi.size());
+//            fragmentNotifikasiBinding.tabNotifikasi.getTabAt(3).getOrCreateBadge().setNumber(deltNotifikasi.size());
+
         });
     }
 

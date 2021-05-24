@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import com.squareup.moshi.Json;
 
+import java.util.Date;
+
 public class Notifikasi implements Parcelable {
 
 	@Json(name = "crtdate")
@@ -126,12 +128,12 @@ public class Notifikasi implements Parcelable {
 		return noNotifikasi;
 	}
 
-	public void setTgl(String tgl){
-		this.tgl = tgl;
+	public String getTgl() {
+		return tgl;
 	}
 
-	public String getTgl(){
-		return tgl;
+	public void setTgl(String tgl) {
+		this.tgl = tgl;
 	}
 
 	public void setCatatan(String catatan){

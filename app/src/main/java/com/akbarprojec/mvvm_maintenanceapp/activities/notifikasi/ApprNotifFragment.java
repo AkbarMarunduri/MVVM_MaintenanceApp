@@ -1,4 +1,4 @@
-package com.akbarprojec.mvvm_maintenanceapp.activities;
+package com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

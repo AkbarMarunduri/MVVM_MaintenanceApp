@@ -13,27 +13,31 @@ import com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi.ApprNotifFragme
 import com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi.CompNotifFragment;
 import com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi.DeltNotifFragment;
 import com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi.NewNotifFragment;
-import com.akbarprojec.mvvm_maintenanceapp.models.Notifikasi;
+import com.akbarprojec.mvvm_maintenanceapp.activities.order.ApprOrderFragment;
+import com.akbarprojec.mvvm_maintenanceapp.activities.order.CompOrderFragment;
+import com.akbarprojec.mvvm_maintenanceapp.activities.order.DeltOrderFragment;
+import com.akbarprojec.mvvm_maintenanceapp.activities.order.NewOrderFragment;
+import com.akbarprojec.mvvm_maintenanceapp.models.Order;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotifikasiPagerAdaptor extends FragmentPagerAdapter {
+public class OrderPagerAdaptor extends FragmentPagerAdapter {
 
-    public NotifikasiPagerAdaptor(@NonNull FragmentManager fm) {
+    public OrderPagerAdaptor(@NonNull FragmentManager fm) {
         super(fm);
     }
 
-    List<Notifikasi> newNotifikasi = new ArrayList<>();
-    List<Notifikasi> aproveNotifikasi = new ArrayList<>();
-    List<Notifikasi> compNotifikasi = new ArrayList<>();
-    List<Notifikasi> deltNotifikasi = new ArrayList<>();
+    List<Order> newOrder = new ArrayList<>();
+    List<Order> appOrder = new ArrayList<>();
+    List<Order> compOrder = new ArrayList<>();
+    List<Order> deltOrder = new ArrayList<>();
 
-    public void setData(List<Notifikasi> newNotifikasi, List<Notifikasi> appNotifikasi, List<Notifikasi> compNotifikasi, List<Notifikasi> deltNotifikasi) {
-        this.newNotifikasi = newNotifikasi;
-        this.aproveNotifikasi = appNotifikasi;
-        this.compNotifikasi = compNotifikasi;
-        this.deltNotifikasi = deltNotifikasi;
+    public void setDataOrder(List<Order> _newOrder, List<Order> _appOrder, List<Order> _compOrder, List<Order> _deltOrder) {
+        this.newOrder = _newOrder;
+        this.appOrder = _appOrder;
+        this.compOrder = _compOrder;
+        this.deltOrder = _deltOrder;
     }
 
     @Nullable
@@ -66,23 +70,23 @@ public class NotifikasiPagerAdaptor extends FragmentPagerAdapter {
         Bundle bundle = new Bundle();
         switch (position) {
             case 0:
-                fragment = new NewNotifFragment();
-                bundle.putParcelableArrayList("data", (ArrayList<? extends Parcelable>) newNotifikasi);
+                fragment = new NewOrderFragment();
+                bundle.putParcelableArrayList("data", (ArrayList<? extends Parcelable>) newOrder);
                 fragment.setArguments(bundle);
                 break;
             case 1:
-                fragment = new ApprNotifFragment();
-                bundle.putParcelableArrayList("data", (ArrayList<? extends Parcelable>) aproveNotifikasi);
+                fragment = new ApprOrderFragment();
+                bundle.putParcelableArrayList("data", (ArrayList<? extends Parcelable>) appOrder);
                 fragment.setArguments(bundle);
                 break;
             case 2:
-                fragment = new CompNotifFragment();
-                bundle.putParcelableArrayList("data", (ArrayList<? extends Parcelable>) compNotifikasi);
+                fragment = new CompOrderFragment();
+                bundle.putParcelableArrayList("data", (ArrayList<? extends Parcelable>) compOrder);
                 fragment.setArguments(bundle);
                 break;
             case 3:
-                fragment = new DeltNotifFragment();
-                bundle.putParcelableArrayList("data", (ArrayList<? extends Parcelable>) deltNotifikasi);
+                fragment = new DeltOrderFragment();
+                bundle.putParcelableArrayList("data", (ArrayList<? extends Parcelable>) deltOrder);
                 fragment.setArguments(bundle);
                 break;
         }

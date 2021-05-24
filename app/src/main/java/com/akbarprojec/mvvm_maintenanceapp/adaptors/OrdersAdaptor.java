@@ -55,11 +55,6 @@ public class OrdersAdaptor extends RecyclerView.Adapter<OrdersAdaptor.OrderViewH
             containerOrderBinding.setDescription(order.getDescOrder());
             containerOrderBinding.setTanggal(order.getTanggal());
             containerOrderBinding.setStatus(order.getStsOrder());
-
-            containerOrderBinding.getRoot().setOnClickListener(view -> {
-                containerOrderBinding.getRoot().setBackgroundResource(R.drawable.selected_background);
-            });
-
         }
     }
 }

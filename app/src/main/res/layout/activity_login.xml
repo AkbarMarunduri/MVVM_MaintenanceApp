@@ -9,19 +9,42 @@
         android:background="@color/bacground_whith"
         tools:context=".activities.LoginActivity">
 
+        <ImageView
+            android:layout_marginTop="@dimen/_30sdp"
+            android:id="@+id/ivLogin"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:src="@drawable/ic_round_layers_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="login"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:textAllCaps="true"
+            android:textSize="@dimen/_24ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/ivLogin"
+            app:layout_constraintStart_toStartOf="@id/ivLogin"
+            app:layout_constraintTop_toBottomOf="@+id/ivLogin" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutUserText"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="@dimen/_280sdp"
             android:layout_height="@dimen/_45sdp"
-            android:layout_marginTop="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/_30sdp"
             android:hint="Username"
             android:textColorHint="@color/text_hint_color"
             app:endIconMode="clear_text"
             app:hintTextColor="@color/design_default_color_on_secondary"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/title">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/userName"
@@ -56,13 +79,13 @@
                 android:textSize="@dimen/_12ssp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btlogin"
             android:layout_width="@dimen/_280sdp"
             android:layout_height="@dimen/_45sdp"
             android:layout_margin="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_100sdp"
-            android:backgroundTint="@color/button_black"
+            android:background="@drawable/selected_background"
             android:text="Login"
             android:textAllCaps="false"
             android:textSize="@dimen/_16ssp"

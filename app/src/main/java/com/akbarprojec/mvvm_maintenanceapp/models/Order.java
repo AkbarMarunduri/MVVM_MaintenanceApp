@@ -1,8 +1,11 @@
 package com.akbarprojec.mvvm_maintenanceapp.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.squareup.moshi.Json;
 
-public class Order {
+public class Order implements Parcelable {
 
     @Json(name = "status")
     private String stsOrder;
@@ -22,6 +25,42 @@ public class Order {
     @Json(name = "created_by")
     private String createdBy;
 
+
+    protected Order(Parcel in) {
+        stsOrder = in.readString();
+        noOrder = in.readString();
+        descOrder = in.readString();
+        tanggal = in.readString();
+        releaseBy = in.readString();
+        createdBy = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(stsOrder);
+        dest.writeString(noOrder);
+        dest.writeString(descOrder);
+        dest.writeString(tanggal);
+        dest.writeString(releaseBy);
+        dest.writeString(createdBy);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Order> CREATOR = new Creator<Order>() {
+        @Override
+        public Order createFromParcel(Parcel in) {
+            return new Order(in);
+        }
+
+        @Override
+        public Order[] newArray(int size) {
+            return new Order[size];
+        }
+    };
 
     public String getTanggal() {
         return tanggal;

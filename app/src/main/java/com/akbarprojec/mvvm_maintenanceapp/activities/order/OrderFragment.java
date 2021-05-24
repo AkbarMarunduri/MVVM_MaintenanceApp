@@ -1,4 +1,4 @@
-package com.akbarprojec.mvvm_maintenanceapp.activities;
+package com.akbarprojec.mvvm_maintenanceapp.activities.order;
 
 import android.os.Bundle;
 
@@ -15,7 +15,13 @@ import android.view.ViewGroup;
 import com.akbarprojec.mvvm_maintenanceapp.R;
 import com.akbarprojec.mvvm_maintenanceapp.adaptors.OrdersAdaptor;
 import com.akbarprojec.mvvm_maintenanceapp.databinding.FragmentOrderBinding;
+import com.akbarprojec.mvvm_maintenanceapp.models.Notifikasi;
+import com.akbarprojec.mvvm_maintenanceapp.models.Order;
+import com.akbarprojec.mvvm_maintenanceapp.pager.OrderPagerAdaptor;
 import com.akbarprojec.mvvm_maintenanceapp.viewmodels.OrderViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -24,6 +30,11 @@ public class OrderFragment extends Fragment {
     FragmentOrderBinding orderBinding;
     View view;
     OrderViewModel viewModel;
+
+    List<Order> newOrder = new ArrayList<>();
+    List<Order> apprOrder = new ArrayList<>();
+    List<Order> compOrder = new ArrayList<>();
+    List<Order> deltOrder = new ArrayList<>();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,7 +56,22 @@ public class OrderFragment extends Fragment {
 
     public void loadListOrder() {
         viewModel.getDataListOrder().observe(getActivity(), orderResponse -> {
-            orderBinding.recylerViewOrders.setAdapter(new OrdersAdaptor(orderResponse.getListOrder()));
+            for (Order order : orderResponse.getListOrder()) {
+                if (order.getStsOrder().equalsIgnoreCase("NEW")) {
+                    newOrder.add(order);
+                } else if (order.getStsOrder().equalsIgnoreCase("APPR")) {
+                    apprOrder.add(order);
+                } else if (order.getStsOrder().equalsIgnoreCase("COMP")) {
+                    compOrder.add(order);
+                } else if (order.getStsOrder().equalsIgnoreCase("DELT")) {
+                    deltOrder.add(order);
+                }
+
+                OrderPagerAdaptor orderPagerAdaptor = new OrderPagerAdaptor(getChildFragmentManager());
+                orderPagerAdaptor.setDataOrder(newOrder, apprOrder, compOrder, deltOrder);
+                orderBinding.viewPager.setAdapter(orderPagerAdaptor);
+                orderBinding.tabOrder.setupWithViewPager(orderBinding.viewPager);
+            }
         });
     }
 }

@@ -3,18 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.NotifikasiFragment">
+        android:orientation="vertical"
+        tools:context=".activities.notifikasi.NotifikasiFragment">
 
         <com.google.android.material.appbar.AppBarLayout
-            style="ThemeOverlay.AppCompat.Dark.ActionBar"
+            style="@style/borderTheme.AppBarOverLay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabNotifikasi"
+                style="@style/Tab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:tabIndicatorFullWidth="false"
@@ -27,6 +29,5 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
 </layout>

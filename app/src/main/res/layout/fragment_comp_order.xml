@@ -9,12 +9,13 @@
         tools:context=".activities.notifikasi.NotifikasiFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/apprNotifRv"
+            android:id="@+id/compOrderRv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/notifikasi_item_layout" />
+
 
         <ImageView
             android:id="@+id/emptyLogo"
@@ -23,7 +24,6 @@
             android:layout_gravity="center"
             android:src="@drawable/ic_empty"
             android:visibility="gone" />
-
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -1,5 +1,6 @@
-package com.akbarprojec.mvvm_maintenanceapp.activities;
+package com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.akbarprojec.mvvm_maintenanceapp.R;
+import com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi.NotifDetail.DetailNotifikasiActivity;
 import com.akbarprojec.mvvm_maintenanceapp.adaptors.NotifikasiAdaptor;
 import com.akbarprojec.mvvm_maintenanceapp.databinding.FragmentNewNotifBinding;
 import com.akbarprojec.mvvm_maintenanceapp.listener.NotifikasiListener;
@@ -52,15 +54,10 @@ public class NewNotifFragment extends Fragment implements NotifikasiListener {
         binding.fabAdd.setOnClickListener(v -> Toast.makeText(getContext(), "Notifikasi" + newNotifList.size(), Toast.LENGTH_LONG).show());
 
     }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
+    
     @Override
     public void onClickNotifikasiItem(Notifikasi notifikasi) {
-
+        startActivity(new Intent(getContext(), DetailNotifikasiActivity.class));
     }
 
     @Override
