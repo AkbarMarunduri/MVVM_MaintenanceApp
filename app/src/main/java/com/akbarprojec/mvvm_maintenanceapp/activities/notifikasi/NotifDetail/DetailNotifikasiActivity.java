@@ -1,16 +1,21 @@
 package com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi.NotifDetail;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.navigation.ui.NavigationUI;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.akbarprojec.mvvm_maintenanceapp.R;
 import com.akbarprojec.mvvm_maintenanceapp.databinding.ActivityDetailNotifikasiBinding;
 import com.akbarprojec.mvvm_maintenanceapp.models.Notifikasi;
-import com.akbarprojec.mvvm_maintenanceapp.pager.NotifikasiDetailPagerAdaptor;
-import com.google.android.material.tabs.TabLayout;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,6 +23,7 @@ import java.util.Date;
 public class DetailNotifikasiActivity extends AppCompatActivity {
     Notifikasi notifikasi;
     ActivityDetailNotifikasiBinding binding;
+    View dialogView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +41,31 @@ public class DetailNotifikasiActivity extends AppCompatActivity {
         binding.tvDescription.setText(notifikasi.getDescNotifikasi());
         binding.tvStatus.setText(notifikasi.getStsNotif());
         binding.tvTanggal.setText(notifikasi.getTgl());
+
+        genereteQrCode();
+
+
 //
 //        NotifikasiDetailPagerAdaptor adaptor = new NotifikasiDetailPagerAdaptor(getSupportFragmentManager());
 //        binding.viewPager.setAdapter(adaptor);
 //        binding.tabNotifikasi.setupWithViewPager(binding.viewPager);
+    }
+
+    void genereteQrCode() {
+
+        try {
+            BarcodeEncoder encoder = new BarcodeEncoder();
+            Bitmap bitmap = encoder.encodeBitmap("contect", BarcodeFormat.QR_CODE, 200, 200);
+            binding.qrNotif.setImageBitmap(bitmap);
+
+            dialogView = getLayoutInflater().inflate(R.layout.qr_code_view, null);
+            binding.qrNotif.setOnClickListener(v -> {
+                CostumDialog dialog = new CostumDialog(DetailNotifikasiActivity.this);
+                dialog.setCode(bitmap);
+                dialog.show();
+            });
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,8 +1,8 @@
-package com.akbarprojec.mvvm_maintenanceapp.activities;
+package com.akbarprojec.mvvm_maintenanceapp.activities.profile;
 
+import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.content.DialogInterface;
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,11 +14,10 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.akbarprojec.mvvm_maintenanceapp.R;
-import com.akbarprojec.mvvm_maintenanceapp.databinding.FragmentProfileBinding;
+import com.akbarprojec.mvvm_maintenanceapp.databinding.FragmentProfileDataBinding;
 import com.akbarprojec.mvvm_maintenanceapp.models.User;
 import com.akbarprojec.mvvm_maintenanceapp.ultility.Constant;
 import com.akbarprojec.mvvm_maintenanceapp.ultility.PreferenceManeger;
@@ -28,9 +27,8 @@ import com.squareup.moshi.Moshi;
 
 import java.io.IOException;
 
-
-public class ProfileFragment extends Fragment {
-    FragmentProfileBinding binding;
+public class ProfileDataFragment extends Fragment {
+    FragmentProfileDataBinding binding;
     View view;
     PreferenceManeger preferenceManeger;
     User user;
@@ -41,7 +39,7 @@ public class ProfileFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile_data, container, false);
         view = binding.getRoot();
         return view;
     }
@@ -83,43 +81,9 @@ public class ProfileFragment extends Fragment {
         }
 
         binding.btChangePassword.setOnClickListener(v -> {
-            dialogView = getLayoutInflater().inflate(R.layout.change_password_layout, null);
-            oldPassword = (TextInputEditText) dialogView.findViewById(R.id.tvOldPasswor);
-            newPassword = (TextInputEditText) dialogView.findViewById(R.id.tvNewPassword);
-            rePassword = (TextInputEditText) dialogView.findViewById(R.id.tvRetryNewPassword);
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setView(dialogView);
-            builder.setTitle("Change password");
-            builder.setIcon(R.drawable.ic_profile);
-            builder.setCancelable(true);
-            builder.setPositiveButton("Change", (dialog, which) -> {
-                binding.tvUsername.setText(oldPassword.getText().toString());
-            });
-            builder.setNegativeButton("Cancel", (dialog, which) -> {
-                Toast.makeText(getActivity(), "change password cancel", Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
-            });
-            builder.show();
+            ChangePasswordDialog changeDialog = new ChangePasswordDialog(getActivity());
+            changeDialog.show();
         });
     }
 
-    public void changePassword() {
-        String oldPss, newPass, rePass;
-        if (TextUtils.isEmpty(oldPassword.getText().toString())) {
-            oldPassword.setError("Masukkan password lama anda");
-            oldPassword.requestFocus();
-        } else if (TextUtils.isEmpty(newPassword.getText().toString())) {
-            newPassword.setError("Masukkan password baru");
-            newPassword.requestFocus();
-        } else if (TextUtils.isEmpty(rePassword.getText().toString())) {
-            rePassword.setError("Masukkan ulang password baru");
-        } else if (!newPassword.getText().equals(rePassword.getText())) {
-            rePassword.setError("password baru tidak sesuai");
-            rePassword.setText("");
-            rePassword.requestFocus();
-        } else {
-            Toast.makeText(getActivity(), "Password sudah diubah", Toast.LENGTH_SHORT).show();
-        }
-    }
 }

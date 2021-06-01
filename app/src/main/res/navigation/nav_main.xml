@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_laporan" />
     <fragment
         android:id="@+id/menuprofile"
-        android:name="com.akbarprojec.mvvm_maintenanceapp.activities.ProfileFragment"
+        android:name="com.akbarprojec.mvvm_maintenanceapp.activities.profile.ProfileDataFragment"
         android:label="Profile User"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile_data" />
 </navigation>

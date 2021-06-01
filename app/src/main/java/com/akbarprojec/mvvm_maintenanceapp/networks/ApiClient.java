@@ -9,7 +9,7 @@ public class ApiClient {
     public static Retrofit getRetrofit() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://192.168.1.2/portalMaintenanceApi/")
+                    .baseUrl("http://192.168.1.6/portalMaintenanceApi/")
                     .addConverterFactory(MoshiConverterFactory.create())
                     .build();
         }

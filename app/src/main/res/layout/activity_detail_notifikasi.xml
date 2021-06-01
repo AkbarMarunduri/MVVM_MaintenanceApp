@@ -83,6 +83,15 @@
                     app:layout_constraintStart_toEndOf="@id/nomor"
                     app:layout_constraintTop_toTopOf="@id/nomor" />
 
+                <ImageView
+                    android:id="@+id/qrNotif"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:src="@drawable/background_notifikasi"
+                    app:layout_constraintTop_toTopOf="@id/tvNomor" />
+
                 <TextView
                     android:id="@+id/description"
                     android:layout_width="@dimen/_70sdp"

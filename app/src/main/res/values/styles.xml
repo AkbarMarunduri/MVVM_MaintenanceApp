@@ -23,4 +23,6 @@
     <style name="Tab.notifikasi" >
         <item name="android:background">#FFF</item>
     </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat" />
 </resources>
