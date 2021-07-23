@@ -3,7 +3,7 @@
     <style name="borderTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimarySurface">@color/text_colo_whith</item>
-        <item name="android:colorPrimary">@color/text_colo_whith</item>
+        <item name="android:colorPrimary">@color/text_hint_color</item>
         <item name="android:colorPrimaryDark">@color/button_black</item>
         <item name="color">@color/text_colo_whith</item>
         <item name="fontFamily">@font/arial</item>

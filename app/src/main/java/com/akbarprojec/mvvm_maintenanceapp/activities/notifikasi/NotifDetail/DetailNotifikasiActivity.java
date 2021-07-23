@@ -1,24 +1,20 @@
 package com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi.NotifDetail;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.akbarprojec.mvvm_maintenanceapp.R;
 import com.akbarprojec.mvvm_maintenanceapp.databinding.ActivityDetailNotifikasiBinding;
+import com.akbarprojec.mvvm_maintenanceapp.dialog.CostumDialog;
 import com.akbarprojec.mvvm_maintenanceapp.models.Notifikasi;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class DetailNotifikasiActivity extends AppCompatActivity {
     Notifikasi notifikasi;
@@ -44,22 +40,16 @@ public class DetailNotifikasiActivity extends AppCompatActivity {
 
         genereteQrCode();
 
-
-//
-//        NotifikasiDetailPagerAdaptor adaptor = new NotifikasiDetailPagerAdaptor(getSupportFragmentManager());
-//        binding.viewPager.setAdapter(adaptor);
-//        binding.tabNotifikasi.setupWithViewPager(binding.viewPager);
     }
 
     void genereteQrCode() {
-
         try {
             BarcodeEncoder encoder = new BarcodeEncoder();
             Bitmap bitmap = encoder.encodeBitmap("contect", BarcodeFormat.QR_CODE, 200, 200);
-            binding.qrNotif.setImageBitmap(bitmap);
+            binding.QrCode.setImageBitmap(bitmap);
 
             dialogView = getLayoutInflater().inflate(R.layout.qr_code_view, null);
-            binding.qrNotif.setOnClickListener(v -> {
+            binding.QrCode.setOnClickListener(v -> {
                 CostumDialog dialog = new CostumDialog(DetailNotifikasiActivity.this);
                 dialog.setCode(bitmap);
                 dialog.show();

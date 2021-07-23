@@ -1,6 +1,4 @@
 package com.akbarprojec.mvvm_maintenanceapp.networks;
-
-import com.akbarprojec.mvvm_maintenanceapp.models.Notifikasi;
 import com.akbarprojec.mvvm_maintenanceapp.responses.ResponseValue;
 
 import retrofit2.Call;
@@ -14,6 +12,7 @@ public interface MaintenanceInterface {
     @POST("login.php")
     Call<ResponseValue> loginToApps(@Field("iduser") String id,
                                     @Field("pass") String pasw);
+
     @FormUrlEncoded
     @POST("logout.php")
     Call<ResponseValue> logOutApp(@Field("iduser") String id);
@@ -23,4 +22,11 @@ public interface MaintenanceInterface {
 
     @GET("Order.php")
     Call<ResponseValue> getListOrder();
+
+    @FormUrlEncoded
+    @POST("ChangePassword.php")
+    Call<ResponseValue> changePassword(@Field("iduser") String id,
+                                       @Field("pass") String pass,
+                                       @Field("new_pass") String newPass);
+
 }

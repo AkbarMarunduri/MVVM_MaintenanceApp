@@ -21,7 +21,7 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardNotifikasi"
+        android:id="@+id/cardOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/_5sdp"

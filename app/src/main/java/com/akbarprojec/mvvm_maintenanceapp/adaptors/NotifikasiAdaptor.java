@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.akbarprojec.mvvm_maintenanceapp.R;
 import com.akbarprojec.mvvm_maintenanceapp.databinding.NotifikasiItemLayoutBinding;
-import com.akbarprojec.mvvm_maintenanceapp.listener.NotifikasiListener;
+import com.akbarprojec.mvvm_maintenanceapp.listener.DetailNotifListener;
 import com.akbarprojec.mvvm_maintenanceapp.models.Notifikasi;
 
 import java.util.ArrayList;
@@ -20,10 +20,10 @@ import androidx.recyclerview.widget.RecyclerView;
 public class NotifikasiAdaptor extends RecyclerView.Adapter<NotifikasiAdaptor.NotifikasiViewHolde> {
 
     List<Notifikasi> notifikasis;
-    NotifikasiListener notifikasiListener;
+    DetailNotifListener notifikasiListener;
     private LayoutInflater layoutInflater;
 
-    public NotifikasiAdaptor(List<Notifikasi> notifikasis, NotifikasiListener notifikasiListener) {
+    public NotifikasiAdaptor(List<Notifikasi> notifikasis, DetailNotifListener notifikasiListener) {
         this.notifikasis = notifikasis;
         this.notifikasiListener = notifikasiListener;
     }
@@ -90,13 +90,13 @@ public class NotifikasiAdaptor extends RecyclerView.Adapter<NotifikasiAdaptor.No
                             selectItem.add(n);
                         }
                     }
-                    notifikasiListener.onLongClickNotifikasiItem(selectItem);
+                    notifikasiListener.onLongClickItem(selectItem);
                     return true;
                 }
             });
 
             notifikasiBinding.cardNotifikasi.setOnClickListener(view -> {
-                notifikasiListener.onClickNotifikasiItem(notifikasi);
+                notifikasiListener.onClickItem(notifikasi);
             });
         }
     }

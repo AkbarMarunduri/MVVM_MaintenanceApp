@@ -1,8 +1,5 @@
 package com.akbarprojec.mvvm_maintenanceapp.activities.profile;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,14 +7,13 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.akbarprojec.mvvm_maintenanceapp.R;
 import com.akbarprojec.mvvm_maintenanceapp.databinding.FragmentProfileDataBinding;
+import com.akbarprojec.mvvm_maintenanceapp.dialog.ChangePasswordDialog;
 import com.akbarprojec.mvvm_maintenanceapp.models.User;
 import com.akbarprojec.mvvm_maintenanceapp.ultility.Constant;
 import com.akbarprojec.mvvm_maintenanceapp.ultility.PreferenceManeger;

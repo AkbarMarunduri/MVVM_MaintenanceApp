@@ -14,13 +14,13 @@ import com.akbarprojec.mvvm_maintenanceapp.R;
 import com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi.NotifDetail.DetailNotifikasiActivity;
 import com.akbarprojec.mvvm_maintenanceapp.adaptors.NotifikasiAdaptor;
 import com.akbarprojec.mvvm_maintenanceapp.databinding.FragmentCompNotifBinding;
-import com.akbarprojec.mvvm_maintenanceapp.listener.NotifikasiListener;
+import com.akbarprojec.mvvm_maintenanceapp.listener.DetailNotifListener;
 import com.akbarprojec.mvvm_maintenanceapp.models.Notifikasi;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompNotifFragment extends Fragment implements NotifikasiListener {
+public class CompNotifFragment extends Fragment implements DetailNotifListener {
     FragmentCompNotifBinding binding;
     View view;
     List<Notifikasi> compNotifikasi = new ArrayList<>();
@@ -50,14 +50,14 @@ public class CompNotifFragment extends Fragment implements NotifikasiListener {
     }
 
     @Override
-    public void onClickNotifikasiItem(Notifikasi notifikasi) {
+    public void onClickItem(Notifikasi notifikasi) {
         Intent intent = new Intent(getActivity(), DetailNotifikasiActivity.class);
         intent.putExtra("data", notifikasi);
         startActivity(intent);
     }
 
     @Override
-    public void onLongClickNotifikasiItem(List<Notifikasi> notifSelected) {
+    public void onLongClickItem(List<Notifikasi> notifSelected) {
 
     }
 }

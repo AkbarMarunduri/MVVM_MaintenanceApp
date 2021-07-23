@@ -1,5 +1,6 @@
 package com.akbarprojec.mvvm_maintenanceapp.activities.order;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +11,16 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.akbarprojec.mvvm_maintenanceapp.R;
+import com.akbarprojec.mvvm_maintenanceapp.activities.order.DetailOrder.DetailOrderActivity;
 import com.akbarprojec.mvvm_maintenanceapp.adaptors.OrdersAdaptor;
 import com.akbarprojec.mvvm_maintenanceapp.databinding.FragmentCompOrderBinding;
+import com.akbarprojec.mvvm_maintenanceapp.listener.DetailOrderListener;
 import com.akbarprojec.mvvm_maintenanceapp.models.Order;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompOrderFragment extends Fragment {
+public class CompOrderFragment extends Fragment implements DetailOrderListener {
     FragmentCompOrderBinding binding;
     View view;
     List<Order> compOrder = new ArrayList<>();
@@ -39,7 +42,7 @@ public class CompOrderFragment extends Fragment {
     private void doInitializasion() {
         compOrder = getArguments().getParcelableArrayList("data");
         if (compOrder.size() > 0) {
-            OrdersAdaptor ordersAdaptor = new OrdersAdaptor(compOrder);
+            OrdersAdaptor ordersAdaptor = new OrdersAdaptor(compOrder,this);
             binding.compOrderRv.setAdapter(ordersAdaptor);
         } else {
             binding.emptyLogo.setVisibility(View.VISIBLE);
@@ -47,4 +50,15 @@ public class CompOrderFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onClickItem(Order order) {
+        Intent intent = new Intent(getActivity(), DetailOrderActivity.class);
+        intent.putExtra("data", order);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onLongClickItem(List<Order> notifSelected) {
+
+    }
 }

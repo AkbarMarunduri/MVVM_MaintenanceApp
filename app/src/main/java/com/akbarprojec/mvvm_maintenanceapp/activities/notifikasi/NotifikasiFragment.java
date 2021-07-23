@@ -1,6 +1,5 @@
 package com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,12 +11,10 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.akbarprojec.mvvm_maintenanceapp.R;
-import com.akbarprojec.mvvm_maintenanceapp.adaptors.NotifikasiAdaptor;
 import com.akbarprojec.mvvm_maintenanceapp.databinding.FragmentNotifikasiBinding;
-import com.akbarprojec.mvvm_maintenanceapp.listener.NotifikasiListener;
+import com.akbarprojec.mvvm_maintenanceapp.listener.DetailNotifListener;
 import com.akbarprojec.mvvm_maintenanceapp.models.Notifikasi;
 import com.akbarprojec.mvvm_maintenanceapp.pager.NotifikasiPagerAdaptor;
 import com.akbarprojec.mvvm_maintenanceapp.viewmodels.NotifikasiViewModel;
@@ -30,7 +27,7 @@ import java.util.List;
  * <p>
  * create an instance of this fragment.
  */
-public class NotifikasiFragment extends Fragment implements NotifikasiListener {
+public class NotifikasiFragment extends Fragment implements DetailNotifListener {
     FragmentNotifikasiBinding fragmentNotifikasiBinding;
     View view;
     private NotifikasiViewModel viewModel;
@@ -86,12 +83,12 @@ public class NotifikasiFragment extends Fragment implements NotifikasiListener {
     }
 
     @Override
-    public void onClickNotifikasiItem(Notifikasi notifikasi) {
+    public void onClickItem(Notifikasi notifikasi) {
 
     }
 
     @Override
-    public void onLongClickNotifikasiItem(List<Notifikasi> notifSelected) {
+    public void onLongClickItem(List<Notifikasi> notifSelected) {
 
     }
 }

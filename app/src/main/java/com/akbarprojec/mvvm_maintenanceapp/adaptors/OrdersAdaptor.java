@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 
 import com.akbarprojec.mvvm_maintenanceapp.R;
 import com.akbarprojec.mvvm_maintenanceapp.databinding.OrderItemLayoutBinding;
+import com.akbarprojec.mvvm_maintenanceapp.listener.DetailOrderListener;
 import com.akbarprojec.mvvm_maintenanceapp.models.Order;
 
 import java.util.ArrayList;
@@ -17,8 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 public class OrdersAdaptor extends RecyclerView.Adapter<OrdersAdaptor.OrderViewHolder>{
     private List<Order> orderList = new ArrayList<>();
     private LayoutInflater layoutInflater;
+    DetailOrderListener listener;
 
-    public OrdersAdaptor(List<Order> orderList) {
+    public OrdersAdaptor(List<Order> orderList, DetailOrderListener listener) {
+        this.listener = listener;
         this.orderList = orderList;
     }
 
@@ -55,6 +58,10 @@ public class OrdersAdaptor extends RecyclerView.Adapter<OrdersAdaptor.OrderViewH
             containerOrderBinding.setDescription(order.getDescOrder());
             containerOrderBinding.setTanggal(order.getTanggal());
             containerOrderBinding.setStatus(order.getStsOrder());
+
+            containerOrderBinding.cardOrder.setOnClickListener(view ->{
+                listener.onClickItem(order);
+            } );
         }
     }
 }

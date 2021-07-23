@@ -1,4 +1,4 @@
-package com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi.NotifDetail;
+package com.akbarprojec.mvvm_maintenanceapp.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;

@@ -7,14 +7,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi.NotifDetail.Data;
-import com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi.NotifDetail.Downtime;
+import com.akbarprojec.mvvm_maintenanceapp.activities.order.DetailOrder.Data;
+import com.akbarprojec.mvvm_maintenanceapp.activities.order.DetailOrder.Downtime;
 import com.akbarprojec.mvvm_maintenanceapp.models.Notifikasi;
 
 
-public class NotifikasiDetailPagerAdaptor extends FragmentPagerAdapter {
+public class OrderDetailPagerAdaptor extends FragmentPagerAdapter {
 
-    public NotifikasiDetailPagerAdaptor(@NonNull FragmentManager fm) {
+    public OrderDetailPagerAdaptor(@NonNull FragmentManager fm) {
         super(fm);
     }
 

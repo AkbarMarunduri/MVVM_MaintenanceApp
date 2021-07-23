@@ -8,15 +8,14 @@ import com.akbarprojec.mvvm_maintenanceapp.models.User;
 import com.squareup.moshi.Json;
 
 public class ResponseValue {
-
-    @Json(name = "resultUser")
-    private User resultUser;
-
     @Json(name = "message")
     private String message;
 
     @Json(name = "value")
     private int value;
+
+    @Json(name = "resultUser")
+    private User resultUser;
 
     @Json(name = "resultNotifikasi")
     private List<Notifikasi> listNotifikasi;
@@ -28,16 +27,8 @@ public class ResponseValue {
         return listOrder;
     }
 
-    public void setListOrder(List<Order> listOrder) {
-        this.listOrder = listOrder;
-    }
-
     public User getResultUser() {
         return resultUser;
-    }
-
-    public void setResultUser(User resultUser) {
-        this.resultUser = resultUser;
     }
 
     public String getMessage() {

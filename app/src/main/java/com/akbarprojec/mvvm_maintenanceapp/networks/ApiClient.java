@@ -4,7 +4,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
 public class ApiClient {
-
     public static Retrofit retrofit;
     public static Retrofit getRetrofit() {
         if (retrofit == null) {

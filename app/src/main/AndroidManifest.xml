@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.akbarprojec.mvvm_maintenanceapp">
 
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +19,8 @@
         android:theme="@style/borderTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".activities.LoginActivity"></activity>
+        <activity android:name=".activities.order.DetailOrder.DetailOrderActivity"></activity>
+        <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.notifikasi.NotifDetail.DetailNotifikasiActivity" />
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.SplashScreenActivity">

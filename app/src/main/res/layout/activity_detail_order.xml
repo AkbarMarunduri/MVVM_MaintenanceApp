@@ -3,10 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -171,106 +167,37 @@
                     app:layout_constraintTop_toTopOf="@id/status"
                     app:layout_goneMarginLeft="@dimen/_5sdp" />
 
-                <ScrollView
+
+                <com.google.android.material.appbar.AppBarLayout
+                    android:id="@+id/layBar"
+                    style="@style/borderTheme.AppBarOverLay"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginRight="@dimen/_10sdp"
                     app:layout_constraintTop_toBottomOf="@id/status">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tabNotifikasi"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp">
+                        android:layout_height="wrap_content"
+                        android:elevation="@dimen/_10sdp"
+                        app:tabIndicatorFullWidth="false"
+                        app:tabMode="scrollable" />
+                </com.google.android.material.appbar.AppBarLayout>
 
-                        <TextView
-                            android:id="@+id/titleMesin"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:text="Data"
-                            android:textSize="@dimen/_12ssp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <View
-                            android:id="@+id/divider1"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:background="?android:attr/listDivider"
-                            app:layout_constraintTop_toBottomOf="@id/titleMesin"
-                            tools:layout_editor_absoluteX="17dp"
-                            tools:layout_editor_absoluteY="47dp" />
-
-                        <TextView
-                            android:id="@+id/tvMesin"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:text="100000000 - PANEL SAW"
-                            android:textSize="@dimen/_12ssp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/divider1" />
-
-                        <TextView
-                            android:id="@+id/tvPlant"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:text="PNPR - PIANO PARTS"
-                            android:textSize="@dimen/_12ssp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvMesin" />
-
-                        <TextView
-                            android:id="@+id/tvPelapor"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:text="PELAPOR - AKBAR MD"
-                            android:textSize="@dimen/_12ssp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvPlant" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </ScrollView>
-                <!--                <com.google.android.material.appbar.AppBarLayout-->
-                <!--                    android:id="@+id/layBar"-->
-                <!--                    style="@style/borderTheme.AppBarOverLay"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginLeft="@dimen/_10sdp"-->
-                <!--                    android:layout_marginTop="@dimen/_10sdp"-->
-                <!--                    android:layout_marginRight="@dimen/_10sdp"-->
-                <!--                    app:layout_constraintTop_toBottomOf="@id/status">-->
-
-                <!--                    <com.google.android.material.tabs.TabLayout-->
-                <!--                        android:id="@+id/tabNotifikasi"-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        app:tabIndicatorFullWidth="false"-->
-                <!--                        android:elevation="@dimen/_10sdp"-->
-                <!--                        app:tabMode="scrollable" />-->
-                <!--                </com.google.android.material.appbar.AppBarLayout>-->
-
-                <!--                <androidx.viewpager.widget.ViewPager-->
-                <!--                    android:id="@+id/viewPager"-->
-                <!--                    style="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="0dp"-->
-                <!--                    android:layout_marginLeft="@dimen/_10sdp"-->
-                <!--                    android:layout_marginRight="@dimen/_10sdp"-->
-                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--                    android:layout_marginBottom="@dimen/_10sdp"-->
-                <!--                    android:background="@drawable/background_notifikasi"-->
-                <!--                    app:layout_constraintTop_toBottomOf="@id/layBar" />-->
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
+                    style="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/background_notifikasi"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layBar" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>

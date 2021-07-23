@@ -1,27 +1,26 @@
 package com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.akbarprojec.mvvm_maintenanceapp.R;
+import com.akbarprojec.mvvm_maintenanceapp.activities.notifikasi.NotifDetail.DetailNotifikasiActivity;
 import com.akbarprojec.mvvm_maintenanceapp.adaptors.NotifikasiAdaptor;
 import com.akbarprojec.mvvm_maintenanceapp.databinding.FragmentApprNotifBinding;
-import com.akbarprojec.mvvm_maintenanceapp.databinding.FragmentNewNotifBinding;
-import com.akbarprojec.mvvm_maintenanceapp.listener.NotifikasiListener;
+import com.akbarprojec.mvvm_maintenanceapp.listener.DetailNotifListener;
 import com.akbarprojec.mvvm_maintenanceapp.models.Notifikasi;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ApprNotifFragment extends Fragment implements NotifikasiListener {
+public class ApprNotifFragment extends Fragment implements DetailNotifListener {
     FragmentApprNotifBinding binding;
     View view;
     List<Notifikasi> apprNotifikasi = new ArrayList<>();
@@ -52,12 +51,14 @@ public class ApprNotifFragment extends Fragment implements NotifikasiListener {
     }
 
     @Override
-    public void onClickNotifikasiItem(Notifikasi notifikasi) {
-
+    public void onClickItem(Notifikasi notifikasi) {
+        Intent intent = new Intent(getActivity(), DetailNotifikasiActivity.class);
+        intent.putExtra("data", notifikasi);
+        startActivity(intent);
     }
 
     @Override
-    public void onLongClickNotifikasiItem(List<Notifikasi> notifSelected) {
+    public void onLongClickItem(List<Notifikasi> notifSelected) {
 
     }
 }
