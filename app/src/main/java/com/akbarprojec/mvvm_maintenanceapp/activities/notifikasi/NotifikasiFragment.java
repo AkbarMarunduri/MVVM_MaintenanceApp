@@ -56,7 +56,7 @@ public class NotifikasiFragment extends Fragment implements DetailNotifListener 
     }
 
     private void lodaListNotifikasi() {
-        viewModel.getNotifikasiList().observe(getActivity(), notifikasiResponse -> {
+        viewModel.getNotifikasiList().observe(getViewLifecycleOwner(), notifikasiResponse -> {
             for (Notifikasi notifikasi : notifikasiResponse.getListNotifikasi()) {
                 if (notifikasi.getStsNotif().equalsIgnoreCase("NEW")) {
                     newNotifikasi.add(notifikasi);
