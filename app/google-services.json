@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1018586918644",
+    "project_id": "maintenance-app-97169",
+    "storage_bucket": "maintenance-app-97169.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1018586918644:android:163a0bfb9e65d7d183b8a1",
+        "android_client_info": {
+          "package_name": "com.akbarprojec.mvvm_maintenanceapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1018586918644-lhd53el1h4advge0faktq1rij6n5pn45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBc3_e9LJQvRL0ga5wZGRtp6Umt7ShlvOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1018586918644-lhd53el1h4advge0faktq1rij6n5pn45.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

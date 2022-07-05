@@ -3,9 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/JAVA/MVVM_MaintenanceApp-main/app/src/main/res/layout/activity_detail_order.xml" value="0.22685185185185186" />
         <entry key="..\:/JAVA/MVVM_MaintenanceApp-main/app/src/main/res/layout/activity_index.xml" value="0.1431159420289855" />
         <entry key="..\:/JAVA/MVVM_MaintenanceApp-main/app/src/main/res/layout/activity_login.xml" value="0.13994565217391305" />
+        <entry key="..\:/JAVA/MVVM_MaintenanceApp-main/app/src/main/res/layout/change_password_layout.xml" value="0.259375" />
         <entry key="..\:/JAVA/MVVM_MaintenanceApp-main/app/src/main/res/layout/fragment_new_notif.xml" value="0.25951016154247003" />
+        <entry key="..\:/JAVA/MVVM_MaintenanceApp-main/app/src/main/res/layout/fragment_order.xml" value="0.2553846153846154" />
+        <entry key="..\:/JAVA/MVVM_MaintenanceApp-main/app/src/main/res/layout/layout_menu_nav_header.xml" value="0.2553846153846154" />
+        <entry key="..\:/JAVA/MVVM_MaintenanceApp-main/app/src/main/res/layout/qr_code_view.xml" value="0.259375" />
+        <entry key="..\:/JAVA/MVVM_MaintenanceApp-main/app/src/main/res/menu/navigation_main_menu.xml" value="0.259375" />
       </map>
     </option>
   </component>

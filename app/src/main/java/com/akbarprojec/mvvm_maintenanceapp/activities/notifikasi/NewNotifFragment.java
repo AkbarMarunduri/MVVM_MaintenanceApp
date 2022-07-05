@@ -51,7 +51,7 @@ public class NewNotifFragment extends Fragment implements DetailNotifListener {
             binding.emptyLogo.setVisibility(View.VISIBLE);
         }
 
-        binding.fabAdd.setOnClickListener(v -> Toast.makeText(getContext(), "Notifikasi" + newNotifList.size(), Toast.LENGTH_LONG).show());
+        binding.fabAdd.setOnClickListener(v -> Toast.makeText(getContext(), "Coming soon", Toast.LENGTH_LONG).show());
 
     }
     

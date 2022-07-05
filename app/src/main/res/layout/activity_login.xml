@@ -10,21 +10,21 @@
         tools:context=".activities.LoginActivity">
 
         <ImageView
-            android:layout_marginTop="@dimen/_30sdp"
             android:id="@+id/ivLogin"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_30sdp"
             android:src="@drawable/ic_round_layers_24"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="login"
             android:layout_marginTop="@dimen/_20sdp"
+            android:text="login"
             android:textAllCaps="true"
             android:textSize="@dimen/_24ssp"
             android:textStyle="bold"
@@ -79,19 +79,20 @@
                 android:textSize="@dimen/_12ssp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <soup.neumorphism.NeumorphButton
             android:id="@+id/btlogin"
             android:layout_width="@dimen/_280sdp"
-            android:layout_height="@dimen/_45sdp"
+            android:layout_height="@dimen/_50sdp"
             android:layout_margin="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_100sdp"
-            android:background="@drawable/selected_background"
             android:text="Login"
-            android:textAllCaps="false"
+            android:textAlignment="center"
             android:textSize="@dimen/_16ssp"
             app:layout_constraintEnd_toEndOf="@+id/layoutPaswod"
             app:layout_constraintStart_toStartOf="@id/layoutPaswod"
-            app:layout_constraintTop_toBottomOf="@+id/layoutPaswod" />
+            app:layout_constraintTop_toBottomOf="@+id/layoutPaswod"
+            app:neumorph_strokeColor="@color/button_black"
+            app:neumorph_shapeType="basin" />
 
         <TextView
             android:id="@+id/forgotText"

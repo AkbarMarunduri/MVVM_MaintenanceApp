@@ -45,7 +45,6 @@ public class DetailOrderActivity extends AppCompatActivity {
     }
 
     private void genereteQrCode() {
-
         try {
             BarcodeEncoder encoder = new BarcodeEncoder();
             Bitmap bitmap = encoder.encodeBitmap("contect", BarcodeFormat.QR_CODE, 200, 200);

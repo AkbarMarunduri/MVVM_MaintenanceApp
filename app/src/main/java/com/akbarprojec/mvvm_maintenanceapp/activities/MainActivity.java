@@ -1,6 +1,5 @@
 package com.akbarprojec.mvvm_maintenanceapp.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
@@ -16,8 +15,6 @@ import retrofit2.Response;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,7 +34,7 @@ import com.squareup.moshi.Moshi;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
-    ActivityIndexBinding activityIndexBinding;
+    ActivityIndexBinding binding;
     NavigationView navigationView;
     View view;
     PreferenceManeger preferenceManeger;
@@ -46,16 +43,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityIndexBinding = DataBindingUtil.setContentView(this, R.layout.activity_index);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_index);
 
         preferenceManeger = new PreferenceManeger(getApplicationContext());
 
         //mengaktifkan icon menu pada top bar
-        final DrawerLayout drawerLayout = activityIndexBinding.drawerLayout;
-        activityIndexBinding.imageMenu.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
+        final DrawerLayout drawerLayout = binding.drawerLayout;
+        binding.imageMenu.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
 
         //mengatur navigation drawable
-        navigationView = activityIndexBinding.navigationView;
+        navigationView = binding.navigationView;
         navigationView.setItemIconTintList(null);
         navigationView.setItemTextColor(ColorStateList.valueOf(Color.WHITE));
         navigationView.setItemIconTintList(ColorStateList.valueOf(Color.WHITE));
@@ -66,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
         //tag navigasi view dengan navigasi controler
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
         NavigationUI.setupWithNavController(navigationView, navController);
-        navController.addOnDestinationChangedListener((controller, destination, arguments) -> activityIndexBinding.titleMain.setText(destination.getLabel()));
+        navController.addOnDestinationChangedListener((controller, destination, arguments) ->
+                binding.titleMain.setText(destination.getLabel()));
 
     }
 
@@ -100,8 +98,6 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseValue> call, Response<ResponseValue> response) {
                 if (response.body().getValue() == 1) {
                     Toast.makeText(MainActivity.this, "Berhasil logout", Toast.LENGTH_SHORT).show();
-                } else {
-
                 }
             }
 

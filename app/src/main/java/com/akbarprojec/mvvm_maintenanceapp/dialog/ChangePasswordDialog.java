@@ -30,6 +30,7 @@ public class ChangePasswordDialog extends Dialog {
     public Activity activity;
     PreferenceManeger preferenceManeger;
     User user;
+    ChangePasswordLayoutBinding binding;
     public ChangePasswordDialog(@NonNull Activity context) {
         super(context);
         this.activity = context;
@@ -62,7 +63,7 @@ public class ChangePasswordDialog extends Dialog {
                 } else if (TextUtils.isEmpty(rePassword.getText().toString().trim())) {
                     rePassword.setError("Tidak boleh kosong");
                     rePassword.requestFocus();
-                }else if (!rePassword.getText().toString().equals(newPassword.getText().toString())) {
+                } else if (!rePassword.getText().toString().equals(newPassword.getText().toString())) {
                     rePassword.setError("Confirm password tidak sama");
                     rePassword.requestFocus();
                 } else {
@@ -77,6 +78,7 @@ public class ChangePasswordDialog extends Dialog {
                             }
                             dismiss();
                         }
+
                         @Override
                         public void onFailure(Call<ResponseValue> call, Throwable t) {
                             t.printStackTrace();
